@@ -1,0 +1,21 @@
+/* Имитация Ворда */
+.like-word{
+	font-family: 'Calibri', sans-serif;
+    font-size: 14pt;
+    padding: 1.5cm 1.5cm 1.5cm 2.5cm;
+    background: white;
+    border: 1px solid #c8c8c8;
+    margin: auto;
+}
+
+.like-word ul{
+    margin-top: 0;
+}
+
+.like-word h3{
+    font-family: "Calibri Light", sans-serif;
+    font-size: 16pt;
+    font-weight: bold;
+    color: #2E74B5;
+    margin-bottom: 5px;
+}

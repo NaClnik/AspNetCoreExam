@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Экзамен</title>
+
+        <!-- Подключение стилей. -->
+        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="css/like_word.css">
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body>
+        <header class="bg-info">
+            <nav class="navbar navbar-expand-lg navbar-dark primary container">
+                <a class="navbar-brand" href="index.html">Work</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+            <h1 class="text-center m-3 m-sm-5"><strong>Экзамен</strong></h1>
+
+            <div class="like-word mt-3 mb-5">
+                <p>
+                    <strong>Задача 1.</strong> Разработайте решение с двумя приложениями – первое,
+                    серверное приложение, предоставляет WebAPI (REST набор запросов)
+                    второму, клиентскому приложению. Клиентский проект
+                    реализуйте на HTML5, CSS3, Bootstrap, jQuery.
+                </p>
+                <p>
+                    Решение должно реализовать следующие запросы к базе данных
+                    (структура базы данных на следующем рисунке, используйте
+                    Entity Framework Core). Дизайн клиентского приложения произволен,
+                    но все-таки требуется выводить данные о разработчике и
+                    задание на разработку по отдельным командам.
+                </p>
+                <img src="images/database.png" alt="Таблицы БД">
+                <ul>
+                    <li><strong>Запрос 1.</strong> Вывести полную информацию обо всех книгах</li>
+                    <li><strong>Запрос 2.</strong> Вывести название, год издания, автора и цену учебников по Android</li>
+                    <li><strong>Запрос 3.</strong> Вывести название, год издания и количество задачников по LINQ</li>
+                    <li><strong>Запрос 4.</strong> Вывести автора, название, категорию и стоимость для каждой книги, количество которых от 4 до 6</li>
+                    <li><strong>Запрос 5.</strong> Вывести фамилии и инициалы авторов и количество книг этих авторов</li>
+                    <li><strong>Запрос 6.</strong> Для категорий книг вывести количество, минимальную стоимость книги, среднюю стоимость книги, максимальную стоимость книги</li>
+                    <li><strong>Запрос 7.</strong> Для всех книг автора Абрамян М.Э. увеличить стоимость книг на 15%</li>
+                    <li><strong>Запрос 8.</strong> Уменьшить количество книг по C++ на 1, не допускать отрицательных значений.</li>
+                </ul>
+                <p>
+                    Также необходимо выводить все таблицы в
+                    отдельных страницах, реализовать CRUD-операции
+                    с таблицами (удаление - безопасное).
+                </p>
+            </div>
+        </div>
+
+        <footer class="container-fluid bg-info d-flex footer-height fixed-bottom">
+            <div class="m-auto text-white text-center">Работу выполнил студент группы ПД811 Дзевелюк Даниил Олегович.</div>
+        </footer>
+
+        <!-- Подключение скриптов-->
+        <!-- ненавязчивый JavaScript для Bootstrap 4 -->
+        <script src="lib/bootstrap/js/jquery-3.5.1.min.js"></script>
+        <script src="lib/bootstrap/js/popper.min.js"></script>
+        <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    </body>
+</html>
