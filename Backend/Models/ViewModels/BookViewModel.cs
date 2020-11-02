@@ -14,9 +14,7 @@ namespace Backend.Models.ViewModels
         public int YearOfIssue { get; set; }     // Год выпуска.
         public int Price { get; set; }           // Цена.
         public int Amount { get; set; }          // Количество.
-        public int AuthorId { get; set; }        // Внешний ключ автора.
         public string AuthorName { get; set; }   // Автор.
-        public int CategoryId { get; set; }      // Внешний ключ категории.
         public string CategoryName { get; set; } // Категория.
 
         // Конструктор.
@@ -27,9 +25,7 @@ namespace Backend.Models.ViewModels
             YearOfIssue = book.YearOfIssue;
             Price = book.Price;
             Amount = book.Amount;
-            AuthorId = book.AuthorId;
             AuthorName = book.Author.AuthorName;
-            CategoryId = book.CategoryId;
             CategoryName = book.Category.CategoryName;
         } // ctorf.
     } // BookViewModel.

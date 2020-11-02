@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aaf814a9-44ab-4790-976e-6bbee38f58c9" name="Default Changelist" comment="" />
+    <list default="true" id="aaf814a9-44ab-4790-976e-6bbee38f58c9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Backend/Controllers/AuthorsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Controllers/AuthorsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Kamikoto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Kamikoto.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +44,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Angular/dzevelyuk_angular_010" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="SvnConfiguration">
@@ -53,7 +57,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603960907826</updated>
-      <workItem from="1603960909098" duration="839000" />
+      <workItem from="1603960909098" duration="1111000" />
+      <workItem from="1603963832958" duration="766000" />
+      <workItem from="1603981319091" duration="20000" />
     </task>
     <servers />
   </component>
@@ -70,16 +76,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="531" y="382" width="544" height="563" key="#Notifications" timestamp="1603961327021">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="531" y="382" width="544" height="563" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1603961327021" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1603961383670">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1603981337421">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1603961383670" />
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1603981337421" />
     <state x="461" y="151" key="SettingsEditor" timestamp="1603961750326">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

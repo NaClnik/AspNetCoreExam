@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Backend.Models.DataBase;
+using Backend.Models.FormModels;
 using Backend.Models.ViewModels;
 
 namespace Backend.Controllers
@@ -88,8 +90,12 @@ namespace Backend.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Author>> PostAuthor(Author author)
+        public async Task<ActionResult<AuthorViewModel>> PostAuthor([FromBody]AuthorFormModel authorFormModel)
         {
+            Author author = new Author(authorFormModel.AuthorName);
+
+            Debug.WriteLine(author);
+
             // Добавляем в базу данных переданного автора.
             _context.Authors.Add(author);
 
@@ -97,7 +103,7 @@ namespace Backend.Controllers
             await _context.SaveChangesAsync();
 
             // TODO: Разобраться с методом CreatedAtAction.
-            return CreatedAtAction("GetAuthor", new { id = author.Id }, author);
+            return CreatedAtAction(nameof(GetAuthor), new {Id = author.Id}, author);
         } // PostAuthor.
 
         // DELETE: api/Authors/5
@@ -114,6 +120,8 @@ namespace Backend.Controllers
                 return NotFound();
             } // if.
 
+            var viewModel = new AuthorViewModel(author);
+
             // Удаляем автора из базы данных.
             _context.Authors.Remove(author);
 
@@ -121,7 +129,7 @@ namespace Backend.Controllers
             await _context.SaveChangesAsync();
 
             // Возвращаем AuthorViewModel.
-            return new AuthorViewModel(author);
+            return viewModel;
         } // DeleteAuthor.
 
         // Если автор с переданным id существует, то возвращаем true.

@@ -15,7 +15,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Backend
 {
-    public class Startup
+    public partial class Startup
     {
         // Свойства класса.
         public IConfiguration Configuration { get; }
@@ -29,21 +29,21 @@ namespace Backend
         // Сервисы приложения.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Добавляем БД в сервисы.
-            services.AddDbContext<LibraryDbContext>(options =>
-                options.UseLazyLoadingProxies()
-                    .UseSqlServer(Configuration
-                        .GetConnectionString("DefaultConnection")));
-
             // Добавляем сервис для контроллеров.
             services.AddControllers();
             
             // Добавляем сервис для CORS.
             services.AddCors();
 
-            services.AddScoped<QueriesService>();
-
+            // Сделал класс Startup - partial классом.
+            // В другом файле(Startup.MyServices.cs) я создал
+            // ещё один Startup partial класс и в нём определил метод
+            // SetupServices, чтобы не захламлять основной класс Startup
+            // своими зависимостями. Так посоветовал делать Senior Developer
+            // на вэбинаре от ITVDN.
+            SetupServices(services);
         } // ConfigureServices.
+
 
         // Конвейер обработки запросов.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

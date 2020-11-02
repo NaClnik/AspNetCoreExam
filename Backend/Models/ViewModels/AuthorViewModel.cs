@@ -10,8 +10,8 @@ namespace Backend.Models.ViewModels
     public class AuthorViewModel
     {
         // Свойства класса.
-        public int Id { get; set; }                    // Идентификатор.
-        public string AuthorName { get; set; }         // Имя автора.
+        public int Id { get; set; }                  // Идентификатор.
+        public string AuthorName { get; set; }       // Имя автора.
         public List<BookViewModel> Books { get; set; } // Книги автора.
 
         // Конструктор.
@@ -19,7 +19,7 @@ namespace Backend.Models.ViewModels
         {
             Id = author.Id;
             AuthorName = author.AuthorName;
-            Books = author.Books.Select(book => new BookViewModel(book)).ToList(); 
+            Books = author.Books.Select(book => new BookViewModel(book)).ToList();
         } // ctorf.
     } // AuthorViewModel.
 }
