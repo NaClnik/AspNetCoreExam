@@ -15,10 +15,10 @@ namespace Backend.Controllers
     public class BooksController : ControllerBase
     {
         // Поля класса.
-        private readonly LibraryDbContext _context; // БД.
+        private readonly SoftDeleteLibraryDbContext _context; // БД.
 
         // Конструктор.
-        public BooksController(LibraryDbContext context)
+        public BooksController(SoftDeleteLibraryDbContext context)
         {
             _context = context;
         } // ctorf.

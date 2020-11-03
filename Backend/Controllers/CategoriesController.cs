@@ -15,9 +15,9 @@ namespace Backend.Controllers
     public class CategoriesController : ControllerBase
     {
         // Поля класса.
-        private readonly LibraryDbContext _context; // БД.
+        private readonly SoftDeleteLibraryDbContext _context; // БД.
 
-        public CategoriesController(LibraryDbContext context)
+        public CategoriesController(SoftDeleteLibraryDbContext context)
         {
             _context = context;
         } // ctorf.

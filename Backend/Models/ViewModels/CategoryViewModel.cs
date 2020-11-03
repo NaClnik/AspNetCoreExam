@@ -12,12 +12,14 @@ namespace Backend.Models.ViewModels
         // Свойства класса.
         public int Id { get; set; }              // Идентификатор.
         public string CategoryName { get; set; } // Название категории.
+        public bool IsDeleted { get; set; }      // Флаг логического удаления.
 
         // Конструктор.
         public CategoryViewModel(Category category)
         {
             Id = category.Id;
             CategoryName = category.CategoryName;
+            IsDeleted = category.IsDeleted;
         } // ctorf.
     } // CategoryViewModel.
 }

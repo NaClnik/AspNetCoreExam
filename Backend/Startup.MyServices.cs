@@ -38,7 +38,7 @@ namespace Backend
         private void SetupServices(IServiceCollection services)
         {
             // Добавляем сервис для работы с БД.
-            services.AddDbContext<LibraryDbContext>(options =>
+            services.AddDbContext<SoftDeleteLibraryDbContext>(options =>
                 options.UseLazyLoadingProxies()
                     .UseSqlServer(Configuration
                         .GetConnectionString("DefaultConnection")));

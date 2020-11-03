@@ -17,9 +17,9 @@ namespace Backend.Controllers
     public class AuthorsController : ControllerBase
     {
         // Поля класса.
-        private readonly LibraryDbContext _context; // БД.
+        private readonly SoftDeleteLibraryDbContext _context; // БД.
 
-        public AuthorsController(LibraryDbContext context)
+        public AuthorsController(SoftDeleteLibraryDbContext context)
         {
             _context = context;
         } // ctorf.
@@ -28,6 +28,8 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AuthorViewModel>>> GetAuthors()
         {
+            //await _context.SaveChangesAsync();
+
             // Получаем коллекцию авторов.
             var collection = await _context.Authors.ToListAsync();
 

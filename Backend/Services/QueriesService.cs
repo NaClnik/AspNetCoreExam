@@ -13,10 +13,10 @@ namespace Backend.Services
     public class QueriesService
     {
         // Поля класса.
-        private readonly LibraryDbContext _libraryDbContext;
+        private readonly SoftDeleteLibraryDbContext _libraryDbContext;
 
         // Конструктор.
-        public QueriesService(LibraryDbContext libraryDbContext)
+        public QueriesService(SoftDeleteLibraryDbContext libraryDbContext)
         {
             _libraryDbContext = libraryDbContext;
         } // QueriesService.

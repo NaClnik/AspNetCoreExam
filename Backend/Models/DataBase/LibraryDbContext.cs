@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Backend.Models.DataBase
 {
-    public sealed class LibraryDbContext : DbContext
+    public class LibraryDbContext : DbContext
     {
         // Таблицы БД.
         public DbSet<Author> Authors { get; set; }      // Авторы.
@@ -20,13 +21,14 @@ namespace Backend.Models.DataBase
         public LibraryDbContext() { }
 
         // Конструктор с параметрами.
-        public LibraryDbContext(DbContextOptions<LibraryDbContext> options) : base(options)
+        public LibraryDbContext(DbContextOptions options) : base(options)
         {
             // Чтобы вызвать этот метод в конструкторе, Intellisense посоветовал
             // Сделать запечатать класс (sealed).
             // TODO: Убрать при готовом проекте Database.EnsureDeleted().
-            Database.EnsureDeleted();
-            //Database.EnsureCreated();
+            // Database.EnsureDeleted();
+            // Database.EnsureCreated();
+            // Database.EnsureCreated();
         } // ctorf.
         #endregion
 
