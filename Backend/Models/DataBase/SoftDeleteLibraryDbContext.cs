@@ -22,7 +22,6 @@ namespace Backend.Models.DataBase
             // Чтобы вызвать этот метод в конструкторе, Intellisense посоветовал
             // Сделать запечатать класс (sealed).
             // TODO: Убрать при готовом проекте Database.EnsureDeleted().
-            Database.EnsureDeleted();
             Database.EnsureCreated();
         } // ctorf.
         #endregion
@@ -30,28 +29,32 @@ namespace Backend.Models.DataBase
         public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess,
             CancellationToken cancellationToken = new CancellationToken())
         {
-            try
-            {
-                // Получаем коллекцию элементов, которые должны удалиться.
-                var deletedCollection = ChangeTracker
-                    .Entries()
-                    .Where(e => e.State == EntityState.Deleted);
+            // Получаем коллекцию элементов, которые должны удалиться.
+            var deletedCollection = ChangeTracker
+                .Entries()
+                .Where(e => e.State == EntityState.Deleted);
 
-                Debug.WriteLine(deletedCollection);
-            } // try.
-            catch (Exception e)
+            // TODO: Проверить работу цикла.
+            foreach (var entry in deletedCollection)
             {
-                Debug.WriteLine(e);
-                throw;
-            } // catch.
+                // Если таблица не является наследником интерфейса
+                // для логического удаления, то идем дальше по циклу.
+                if (!(entry.Entity is ISoftDeletable))
+                    continue;
 
-            //    foreach (var item in deletedCollection)
-            //    {
-            //        if (item.Entity is ISoftDeletable)
-            //        {
-            //            await Database.ExecuteSqlRawAsync("", cancellationToken: cancellationToken);
-            //        } // if.
-            //    } // foreach.
+                // Меняем состояние вхождения.
+                entry.State = EntityState.Unchanged;
+
+                // Получить название таблицы вхождения.
+                string table = entry.Metadata.GetTableName();
+
+                // TODO: Сделать проверку на null при надобности.
+                // Выполнить SQL запрос.
+                int count = await Database
+                    .ExecuteSqlRawAsync($"UPDATE {table} SET IsDeleted = 1 WHERE Id = {((IEntity)entry.Entity).Id}", cancellationToken);
+
+                Debug.WriteLine(count);
+            } // foreach.
 
             return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         } // SaveChangesAsync.

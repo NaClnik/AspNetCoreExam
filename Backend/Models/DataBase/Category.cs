@@ -6,7 +6,7 @@ using Backend.Interfaces;
 
 namespace Backend.Models.DataBase
 {
-    public class Category : ISoftDeletable
+    public class Category : IEntity, ISoftDeletable
     {
         // Свойства класса.
         public int Id { get; set; }                          // Идентификатор.

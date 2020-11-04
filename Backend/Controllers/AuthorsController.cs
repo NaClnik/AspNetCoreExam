@@ -28,8 +28,6 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AuthorViewModel>>> GetAuthors()
         {
-            //await _context.SaveChangesAsync();
-
             // Получаем коллекцию авторов.
             var collection = await _context.Authors.ToListAsync();
 
