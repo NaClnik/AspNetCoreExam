@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -27,38 +28,45 @@ namespace Backend.Controllers
         public LibraryController(QueriesService queriesService)
         {
             QueriesService = queriesService;
-        } 
+        } // ctor.
 
-        // TODO: Подумать над применением switch вместо кучи методов.
-        // Работает.
         // GET: api/<LibraryController>
         [HttpGet("{id}")]
-        public async Task<JsonResult> GetQuery1Async(int id)
+        public async Task<ActionResult<string>> GetQuery1Async(int id)
         {
-            object collection = string.Empty;
+            string response;
             switch (id)
             {
                 case 1:
-                    collection = await QueriesService.Query1Async();
+                    response = await QueriesService.Query1Async();
                     break;
                 case 2:
-                    collection = await QueriesService.Query2Async();
+                    response = await QueriesService.Query2Async();
                     break;
                 case 3:
-                    collection = await QueriesService.Query3Async();
+                    response = await QueriesService.Query3Async();
                     break;
                 case 4:
-                    collection = await QueriesService.Query4Async();
+                    response = await QueriesService.Query4Async();
                     break;
                 case 5:
-                    collection = await QueriesService.Query5Async();
+                    response = await QueriesService.Query5Async();
                     break;
                 case 6:
-                    collection = await QueriesService.Query6Async();
+                    response = await QueriesService.Query6Async();
                     break;
+                case 7:
+                    response = await QueriesService.Query7Async();
+                    break;
+                case 8:
+                    response = await QueriesService.Query8Async();
+                    break;
+                default:
+                    return NotFound();
             } // switch
 
-            return new JsonResult(collection);
+            return response;
+            //return 
         }
     }
 }

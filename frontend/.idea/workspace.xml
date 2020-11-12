@@ -20,14 +20,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaf814a9-44ab-4790-976e-6bbee38f58c9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Backend/Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Backend/Controllers/AuthorsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Controllers/AuthorsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Kamikoto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Kamikoto.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Controllers/CategoriesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Controllers/CategoriesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Controllers/LibraryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Controllers/LibraryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Models/DataBase/SoftDeleteLibraryDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Models/DataBase/SoftDeleteLibraryDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Models/FormModels/AuthorFormModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Services/QueriesService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Services/QueriesService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bootstrap/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bootstrap/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/jquery-3.5.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/popper.min.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="PATH_TO_GIT" value="F:\Soft\Git\bin\git.exe" />
@@ -40,11 +62,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Angular/dzevelyuk_angular_010" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="SvnConfiguration">
@@ -60,6 +84,8 @@
       <workItem from="1603960909098" duration="1111000" />
       <workItem from="1603963832958" duration="766000" />
       <workItem from="1603981319091" duration="20000" />
+      <workItem from="1605197126400" duration="206000" />
+      <workItem from="1605197371436" duration="1906000" />
     </task>
     <servers />
   </component>

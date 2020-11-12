@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Backend.Models.DataBase;
+using Backend.Models.PostModels;
 using Backend.Models.ViewModels;
 
 namespace Backend.Controllers
@@ -17,6 +18,7 @@ namespace Backend.Controllers
         // Поля класса.
         private readonly SoftDeleteLibraryDbContext _context; // БД.
 
+        // Конструктор.
         public CategoriesController(SoftDeleteLibraryDbContext context)
         {
             _context = context;
@@ -42,7 +44,7 @@ namespace Backend.Controllers
 
             // Если категория не найдена, то отправляем клиенту
             // ответ NotFound.
-            if (category == null)
+            if (category == null || category.IsDeleted)
             {
                 return NotFound();
             } // if.
@@ -88,8 +90,10 @@ namespace Backend.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<ActionResult<Category>> PostCategory([FromBody]CategoryPostModel categoryPostModel)
         {
+            Category category = new Category(categoryPostModel.Category);
+
             // Добавляем переданную категорию.
             _context.Categories.Add(category);
 
@@ -97,7 +101,7 @@ namespace Backend.Controllers
             await _context.SaveChangesAsync();
 
             // TODO: Разобраться в методе CreatedAtAction.
-            return CreatedAtAction("GetCategory", new { id = category.Id }, category);
+            return CreatedAtAction(nameof(GetCategory), new { id = category.Id }, category);
         } // PostCategory.
 
         // DELETE: api/Categories/5
@@ -109,7 +113,7 @@ namespace Backend.Controllers
 
             // Если категория не найдена, то отправляем
             // клиенту ответ NotFound.
-            if (category == null)
+            if (category == null || category.IsDeleted)
             {
                 return NotFound();
             } // if.
@@ -129,5 +133,5 @@ namespace Backend.Controllers
         {
             return _context.Categories.Any(e => e.Id == id);
         } // CategoryExists.
-    }
+    } // CategoriesController.
 }

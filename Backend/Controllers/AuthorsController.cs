@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Backend.Models.DataBase;
-using Backend.Models.FormModels;
+using Backend.Models.PostModels;
 using Backend.Models.ViewModels;
 
 namespace Backend.Controllers
@@ -44,7 +44,7 @@ namespace Backend.Controllers
 
             // Если автор не найден, то отправляем
             // клиенту ответ NotFound.
-            if (author == null)
+            if (author == null || author.IsDeleted)
             {
                 return NotFound();
             } // if.
@@ -65,23 +65,24 @@ namespace Backend.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(author).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AuthorExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            //_context.Entry(author).State = EntityState.Modified;
+
+            //try
+            //{
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    if (!AuthorExists(id))
+            //    {
+            //        return NotFound();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
 
             return NoContent();
         } // PutAuthor.
@@ -90,11 +91,9 @@ namespace Backend.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<AuthorViewModel>> PostAuthor([FromBody]AuthorFormModel authorFormModel)
+        public async Task<ActionResult<AuthorViewModel>> PostAuthor([FromBody]AuthorPostModel authorPostModel)
         {
-            Author author = new Author(authorFormModel.AuthorName);
-
-            Debug.WriteLine(author);
+            Author author = new Author(authorPostModel.Author);
 
             // Добавляем в базу данных переданного автора.
             _context.Authors.Add(author);
@@ -102,7 +101,6 @@ namespace Backend.Controllers
             // Сохраняем изменения базы данных.
             await _context.SaveChangesAsync();
 
-            // TODO: Разобраться с методом CreatedAtAction.
             return CreatedAtAction(nameof(GetAuthor), new {Id = author.Id}, author);
         } // PostAuthor.
 
@@ -115,12 +113,10 @@ namespace Backend.Controllers
 
             // Если автор не найден, то отправляем
             // клиенту ответ NotFound.
-            if (author == null)
+            if (author == null || author.IsDeleted)
             {
                 return NotFound();
             } // if.
-
-            var viewModel = new AuthorViewModel(author);
 
             // Удаляем автора из базы данных.
             _context.Authors.Remove(author);
@@ -129,7 +125,7 @@ namespace Backend.Controllers
             await _context.SaveChangesAsync();
 
             // Возвращаем AuthorViewModel.
-            return viewModel;
+            return new AuthorViewModel(author);
         } // DeleteAuthor.
 
         // Если автор с переданным id существует, то возвращаем true.

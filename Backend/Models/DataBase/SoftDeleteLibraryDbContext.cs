@@ -34,7 +34,6 @@ namespace Backend.Models.DataBase
                 .Entries()
                 .Where(e => e.State == EntityState.Deleted);
 
-            // TODO: Проверить работу цикла.
             foreach (var entry in deletedCollection)
             {
                 // Если таблица не является наследником интерфейса
@@ -48,12 +47,11 @@ namespace Backend.Models.DataBase
                 // Получить название таблицы вхождения.
                 string table = entry.Metadata.GetTableName();
 
-                // TODO: Сделать проверку на null при надобности.
                 // Выполнить SQL запрос.
                 int count = await Database
                     .ExecuteSqlRawAsync($"UPDATE {table} SET IsDeleted = 1 WHERE Id = {((IEntity)entry.Entity).Id}", cancellationToken);
 
-                Debug.WriteLine(count);
+                ((ISoftDeletable) entry.Entity).IsDeleted = true;
             } // foreach.
 
             return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
