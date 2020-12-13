@@ -27,7 +27,7 @@ namespace Backend.Services
         public async Task<string> Query1Async()
         {
             var collection = 
-                await _libraryDbContext.Books
+                await _libraryDbContext.Books.Where(p => !p.IsDeleted)
                     .Select(book => new BookViewModel(book)).ToListAsync();
 
             return JsonConvert.SerializeObject(collection);
@@ -37,7 +37,8 @@ namespace Backend.Services
         public async Task<string> Query2Async()
         {
             var collection = await _libraryDbContext.Books.Where(book =>
-                    book.Category.CategoryName.ToLower() == "учебник"
+                    !book.IsDeleted
+                    && book.Category.CategoryName.ToLower() == "учебник"
                     && book.Title.Contains("Android")
                     || book.Title.Contains("Андроид"))
                 .Select(book => new
@@ -57,8 +58,10 @@ namespace Backend.Services
         public async Task<string> Query3Async()
         {
             var collection = await _libraryDbContext.Books
-                .Where(book => book.Category.CategoryName.ToLower() == "задачник"
-                               && book.Title.Contains("LINQ"))
+                .Where(book =>
+                    !book.IsDeleted
+                    && book.Category.CategoryName.ToLower() == "задачник"
+                    && book.Title.Contains("LINQ"))
                 .Select(book => new
                 {
                     book.Title,
@@ -75,7 +78,9 @@ namespace Backend.Services
         public async Task<string> Query4Async()
         {
             var collection = await _libraryDbContext.Books
-                .Where(book => book.Amount >= 4 && book.Amount <= 6)
+                .Where(book =>
+                    !book.IsDeleted
+                    && book.Amount >= 4 && book.Amount <= 6)
                 .Select(book => new
                 {
                     book.Author.AuthorName,
@@ -93,6 +98,7 @@ namespace Backend.Services
         public async Task<string> Query5Async()
         {
             var collection = await _libraryDbContext.Books
+                .Where(book => !book.IsDeleted)
                 .GroupBy(item => item.Author.AuthorName)
                 .Select(item => new
                 {
@@ -107,6 +113,7 @@ namespace Backend.Services
         public async Task<string> Query6Async()
         {
             var collection = await _libraryDbContext.Books
+                .Where(book => !book.IsDeleted)
                 .GroupBy(item => item.Category.CategoryName)
                 .Select(item => new
                 {
@@ -124,7 +131,9 @@ namespace Backend.Services
         public async Task<string> Query7Async()
         {
             var books = _libraryDbContext.Books
-                .Where(item => item.Author.AuthorName == "Абрамян М.Э.");
+                .Where(book =>
+                    !book.IsDeleted
+                    && book.Author.AuthorName == "Абрамян М.Э.");
 
             foreach (var book in books)
             {
@@ -134,14 +143,16 @@ namespace Backend.Services
 
             await _libraryDbContext.SaveChangesAsync();
 
-            return JsonConvert.SerializeObject(books.Select(book => new BookViewModel(book)));
+            return JsonConvert.SerializeObject(books.Where(book => !book.IsDeleted).Select(book => new BookViewModel(book)));
         } // Query7Async.
 
         // Запрос 8. Уменьшить количество книг по C++ на 1, не допускать отрицательных значений.
         public async Task<string> Query8Async()
         {
             var books = _libraryDbContext.Books
-                .Where(item => item.Title.Contains("C++"));
+                .Where(book => 
+                    !book.IsDeleted
+                    && book.Title.Contains("C++"));
 
             foreach (var book in books)
             {
@@ -153,7 +164,7 @@ namespace Backend.Services
 
             await _libraryDbContext.SaveChangesAsync();
 
-            return JsonConvert.SerializeObject(books.Select(book => new BookViewModel(book)));
+            return JsonConvert.SerializeObject(books.Where(book => !book.IsDeleted).Select(book => new BookViewModel(book)));
         } // Query8Async.
     } // Queries.
 }

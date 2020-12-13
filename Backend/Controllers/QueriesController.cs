@@ -18,21 +18,21 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LibraryController : ControllerBase
+    public class QueriesController : ControllerBase
     {
         // Свойства класса.
         public QueriesService QueriesService { get; set; }
 
         // Ансамбль конструкторов.
         // Конструктор с параметрами.
-        public LibraryController(QueriesService queriesService)
+        public QueriesController(QueriesService queriesService)
         {
             QueriesService = queriesService;
         } // ctor.
 
-        // GET: api/<LibraryController>
+        // GET: api/<QueriesController>
         [HttpGet("{id}")]
-        public async Task<ActionResult<string>> GetQuery1Async(int id)
+        public async Task<ActionResult<string>> GetQueriesAsync(int id)
         {
             string response;
             switch (id)
@@ -66,7 +66,6 @@ namespace Backend.Controllers
             } // switch
 
             return response;
-            //return 
         }
     }
 }

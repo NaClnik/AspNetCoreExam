@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Backend.Models.DataBase;
+using Backend.Models.PostModels;
 using Backend.Models.ViewModels;
+using Newtonsoft.Json;
 
 namespace Backend.Controllers
 {
@@ -25,18 +27,21 @@ namespace Backend.Controllers
 
         // GET: api/Books
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BookViewModel>>> GetBooks()
+        public async Task<ActionResult<string>> GetBooks()
         {
             // Получаем коллекцию книг.
-            var collection = await _context.Books.ToListAsync();
+            var collection = await _context.Books.Where(p => !p.IsDeleted).ToListAsync();
+
+            var collectionViewModel = collection
+                .Select(book => new BookViewModel(book)).ToList();
 
             // Возвращаем коллекцию BookViewModel.
-            return collection.Select(book => new BookViewModel(book)).ToList();
+            return JsonConvert.SerializeObject(collectionViewModel);
         } // GetBooks.
 
         // GET: api/Books/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<BookViewModel>> GetBook(int id)
+        public async Task<ActionResult<string>> GetBook(int id)
         {
             // Находим книгу по переданному идентификатору.
             var book = await _context.Books.FindAsync(id);
@@ -49,7 +54,7 @@ namespace Backend.Controllers
             } // if.
 
             // Возвращаем BookViewModel.
-            return new BookViewModel(book);
+            return JsonConvert.SerializeObject(new BookViewModel(book));
         } // GetBook.
 
         // PUT: api/Books/5
@@ -89,8 +94,16 @@ namespace Backend.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Book>> PostBook(Book book)
+        public async Task<ActionResult<string>> PostBook([FromBody]BookPostModel bookPostModel)
         {
+            // TODO: Проверить, сработает ли просто передача ID.
+            var book = new Book(bookPostModel.Title, bookPostModel.YearOfIssue,
+                bookPostModel.Price, bookPostModel.Amount)
+            {
+                Author = await _context.Authors.FindAsync(bookPostModel.AuthorId),
+                Category = await _context.Categories.FindAsync(bookPostModel.CategoryId)
+            };
+
             // Добавляем в базу данных переданную книгу.
             _context.Books.Add(book);
 
@@ -98,7 +111,7 @@ namespace Backend.Controllers
             await _context.SaveChangesAsync();
 
             // TODO: Разобраться с методом CreatedAtAction.
-            return CreatedAtAction("GetBook", new { id = book.Id }, book);
+            return JsonConvert.SerializeObject(new BookViewModel(book));
         } // PostBook.
 
         // DELETE: api/Books/5

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Backend.Models.DataBase;
 using Backend.Models.PostModels;
 using Backend.Models.ViewModels;
+using Newtonsoft.Json;
 
 namespace Backend.Controllers
 {
@@ -26,18 +27,23 @@ namespace Backend.Controllers
 
         // GET: api/Categories
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CategoryViewModel>>> GetCategories()
+        public async Task<ActionResult<string>> GetCategories()
         {
             // Получаем коллекцию категорий.
-            var collection = await _context.Categories.ToListAsync();
+            var collection = await _context.Categories.Where(p => !p.IsDeleted).ToListAsync();
+
+            var viewModelCollection = collection
+                .Select(category => new CategoryViewModel(category)).ToList();
+
+            var json = JsonConvert.SerializeObject(viewModelCollection);
 
             // Возвращаем коллекцию CategoryViewModel.
-            return collection.Select(category => new CategoryViewModel(category)).ToList();
+            return json;
         } // GetCategories.
 
         // GET: api/Categories/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<CategoryViewModel>> GetCategory(int id)
+        public async Task<ActionResult<string>> GetCategory(int id)
         {
             // Ищем категорию по идентификатору.
             var category = await _context.Categories.FindAsync(id);
@@ -50,7 +56,7 @@ namespace Backend.Controllers
             } // if.
 
             // Возвращаем клиенту CategoryViewModel.
-            return new CategoryViewModel(category);
+            return JsonConvert.SerializeObject(new CategoryViewModel(category));
         } // GetCategory.
 
         // PUT: api/Categories/5
@@ -90,7 +96,7 @@ namespace Backend.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory([FromBody]CategoryPostModel categoryPostModel)
+        public async Task<ActionResult<string>> PostCategory([FromBody]CategoryPostModel categoryPostModel)
         {
             Category category = new Category(categoryPostModel.Category);
 
@@ -101,7 +107,7 @@ namespace Backend.Controllers
             await _context.SaveChangesAsync();
 
             // TODO: Разобраться в методе CreatedAtAction.
-            return CreatedAtAction(nameof(GetCategory), new { id = category.Id }, category);
+            return JsonConvert.SerializeObject(category);
         } // PostCategory.
 
         // DELETE: api/Categories/5

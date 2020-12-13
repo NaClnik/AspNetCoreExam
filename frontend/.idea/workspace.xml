@@ -19,22 +19,27 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aaf814a9-44ab-4790-976e-6bbee38f58c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Backend/Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Backend.csproj" afterDir="false" />
+    <list default="true" id="aaf814a9-44ab-4790-976e-6bbee38f58c9" name="Default Changelist" comment="Сделаны страницы с запросами">
+      <change afterPath="$PROJECT_DIR$/html/tables/authors.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/tables/books.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/tables/categories.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/tables/authors.add.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/tables/authors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/tables/books.add.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/tables/books.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/tables/books.select.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/tables/categories.add.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/tables/categories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/utils/ajax-helper.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Backend/Controllers/AuthorsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Controllers/AuthorsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Controllers/BooksController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Controllers/BooksController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Backend/Controllers/CategoriesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Controllers/CategoriesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Controllers/LibraryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Controllers/LibraryController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Models/DataBase/SoftDeleteLibraryDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Models/DataBase/SoftDeleteLibraryDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Models/FormModels/AuthorFormModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Controllers/LibraryController.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Backend/Services/QueriesService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Services/QueriesService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/frontend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/frontend.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/bootstrap/css/bootstrap-reboot.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/bootstrap/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bootstrap/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/bootstrap/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bootstrap/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/jquery-3.5.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/bootstrap/js/popper.min.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +53,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -55,8 +61,16 @@
     <option name="PATH_TO_GIT" value="F:\Soft\Git\bin\git.exe" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1jXqi1lbHsDZG2c440InJPWvjQW" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -69,7 +83,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -85,8 +100,29 @@
       <workItem from="1603963832958" duration="766000" />
       <workItem from="1603981319091" duration="20000" />
       <workItem from="1605197126400" duration="206000" />
-      <workItem from="1605197371436" duration="1906000" />
+      <workItem from="1605197371436" duration="3039000" />
+      <workItem from="1605245580703" duration="77000" />
+      <workItem from="1605283278451" duration="3147000" />
+      <workItem from="1605418291444" duration="69000" />
+      <workItem from="1607760231461" duration="3333000" />
+      <workItem from="1607769914609" duration="3077000" />
+      <workItem from="1607774523812" duration="1202000" />
+      <workItem from="1607777005072" duration="1034000" />
+      <workItem from="1607780604023" duration="2733000" />
+      <workItem from="1607784711857" duration="1398000" />
+      <workItem from="1607786167743" duration="118000" />
+      <workItem from="1607786401019" duration="266000" />
+      <workItem from="1607859450066" duration="311000" />
+      <workItem from="1607862780591" duration="984000" />
     </task>
+    <task id="LOCAL-00001" summary="Сделаны страницы с запросами">
+      <created>1605199506131</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605199506131</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,19 +140,23 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Сделаны страницы с запросами" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделаны страницы с запросами" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="531" y="382" width="544" height="563" key="#Notifications" timestamp="1603961327021">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="531" y="382" width="544" height="563" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1603961327021" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1603981337421">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1605418363739">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1603981337421" />
-    <state x="461" y="151" key="SettingsEditor" timestamp="1603961750326">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605418363739" />
+    <state x="461" y="151" key="SettingsEditor" timestamp="1607786594440">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="151" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1603961750326" />
+    <state x="461" y="151" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1607786594440" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1603961655092">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

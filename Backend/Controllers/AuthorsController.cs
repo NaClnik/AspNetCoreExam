@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Backend.Models.DataBase;
 using Backend.Models.PostModels;
 using Backend.Models.ViewModels;
+using Newtonsoft.Json;
 
 namespace Backend.Controllers
 {
@@ -26,18 +27,21 @@ namespace Backend.Controllers
 
         // GET: api/Authors
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AuthorViewModel>>> GetAuthors()
+        public async Task<ActionResult<string>> GetAuthors()
         {
             // Получаем коллекцию авторов.
-            var collection = await _context.Authors.ToListAsync();
+            var collection = await _context.Authors.Where(p => !p.IsDeleted).ToListAsync();
+
+            var collectionViewModel = collection
+                .Select(author => new AuthorViewModel(author)).ToList();
 
             // Возвращаем коллекцию AuthorViewModel.
-            return collection.Select(author => new AuthorViewModel(author)).ToList();
+            return JsonConvert.SerializeObject(collectionViewModel);
         } // GetAuthors.
 
         // GET: api/Authors/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AuthorViewModel>> GetAuthor(int id)
+        public async Task<ActionResult<string>> GetAuthor(int id)
         {
             // Находим автора по переданному идентификатору.
             var author = await _context.Authors.FindAsync(id);
@@ -50,7 +54,7 @@ namespace Backend.Controllers
             } // if.
 
             // Отправляем найденного автора.
-            return new AuthorViewModel(author);
+            return JsonConvert.SerializeObject(new AuthorViewModel(author));
         } // GetAuthor.
 
         // PUT: api/Authors/5
@@ -91,7 +95,7 @@ namespace Backend.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<AuthorViewModel>> PostAuthor([FromBody]AuthorPostModel authorPostModel)
+        public async Task<ActionResult<string>> PostAuthor([FromBody]AuthorPostModel authorPostModel)
         {
             Author author = new Author(authorPostModel.Author);
 
@@ -101,7 +105,7 @@ namespace Backend.Controllers
             // Сохраняем изменения базы данных.
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetAuthor), new {Id = author.Id}, author);
+            return JsonConvert.SerializeObject(author);
         } // PostAuthor.
 
         // DELETE: api/Authors/5
